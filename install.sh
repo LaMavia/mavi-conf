@@ -12,28 +12,13 @@ op 'Installing yay...' \
 
 # brew
 cd "$root_dir" || exit 1
-op 'Installing homebrew...' \
-  ' /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    (echo; echo '\''eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'\'') >> "$HOME/.zprofile"
-    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-    sudo pacman -S base-devel
-  ' \
-  'Succesfully installed homebrew.' \
-  'Failed to install homebrew.' || exit 1
+source ./steps/brew.sh || exit $!
+cd "$root_dir" || exit 1
 
 # glab
-op 'Installing glab...' \
-  'brew install glab' \
-  'Successfully installed glab.' \
-  'Failed to install glab.' || exit 1
+source ./steps/glab.sh || exit $!
+cd "$root_dir" || exit 1
 
-print_info 'Would you like to authenticate glab now? (y/n) '
-read -pr '' confirm
-if [[ $confirm == [YySs] ]]; then
-  firefox 'https://gitlab.com/-/profile/personal_access_tokens'
-  print_info 'Input your access token:'
-  glab auth login --stdin || exit 1
-fi
 
 # github-cli
 op 'Installing gh...' \
@@ -46,6 +31,19 @@ read -pr '' confirm
 if [[ $confirm == [YySs] ]]; then
   gh auth login || exit 1
 fi
+
+# haskell
+op 'Installing ghcup dependencies...' \
+  'yes | head -n1 | sudo pacman -Syu curl gcc gmp make ncurses coreutils xz' \
+  'Successfully installed ghcup dependencies.' \
+  'Failed to install ghcup dependencies.' || exit 1
+
+op 'Installing ghcup...' \
+  'curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh' \
+  'Successfully installed ghcup.' \
+  'Failed to install ghcup.' || exit 1
+
+source "$HOME/.ghcup/env"
 
 # Further packages
 cd "$root_dir" || exit 1
@@ -67,4 +65,4 @@ echo 1 | sudo tee /proc/sys/vm/drop_caches
 
 # gnome config
 cd "$root_dir" || exit 1
-dconf load / < dconf-settings.ini
+dconf load / <dconf-settings.ini
