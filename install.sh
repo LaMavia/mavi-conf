@@ -2,36 +2,15 @@
 
 cd "$(dirname "$0")" || exit 1
 source ./scripts/helpers.sh
-root_dir=$(pwd)
 
-# yay
-source ./steps/yay.sh || exit $?
-cd "$root_dir" || exit 1
+OP_FINAL="cd $(pwd)"
+export OP_FINAL
 
-# brew
-source ./steps/brew.sh || exit $?
-cd "$root_dir" || exit 1
-
-# glab
-source ./steps/glab.sh || exit $?
-cd "$root_dir" || exit 1
-
-# github-cli
-source ./steps/gh.sh || exit $?
-cd "$root_dir" || exit 1
-
-# haskell
-source ./steps/haskell.sh || exit $?
-cd "$root_dir" || exit 1
-
-# Further packages
-source ./steps/sys-packages.sh || exit $?
-cd "$root_dir" || exit 1
-
-# disable cache
-source ./steps/memory.sh || exit $?
-cd "$root_dir" || exit 1
-
-# gnome config
-cd "$root_dir" || exit 1
-source ./steps/gnome.sh || exit 1
+run ./steps/yay.sh
+run ./steps/brew.sh
+run ./steps/glab.sh
+run ./steps/gh.sh
+run ./steps/haskell.sh
+run ./steps/sys-packages.sh
+run ./steps/memory.sh
+run ./steps/gnome.sh
