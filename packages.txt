@@ -1,0 +1,17 @@
+awesome
+cmake
+bat
+brightnessctl
+flameshot
+firefox
+gdb
+htop
+nasm
+obs-studio
+perl
+texlive-most
+texlive-lang
+texlive-bibtexextra
+texlive-fontsextra
+virtualbox
+github-cli

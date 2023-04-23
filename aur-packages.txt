@@ -1,0 +1,4 @@
+postman-bin
+visual-studio-code-bin
+zoom
+zsh-theme-powerlevel10k-git

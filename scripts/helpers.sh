@@ -39,7 +39,7 @@ function op {
       unset OP_OK
     fi
   else
-    print_error "$4: $!"
+    print_error "$4: $?"
     if [ -n "$OP_ERR" ]; then
       eval "$OP_ERR"
       unset OP_ERR
@@ -51,6 +51,35 @@ function op {
     print_info "Running final hook: $OP_FINAL"
     eval "$OP_FINAL"
     unset OP_FINAL
+  fi
+
+  if [[ $fail = true ]]; then
+    exit 1
+  fi
+}
+
+function run() {
+  local fail
+  
+  fname=$1
+  shift
+
+  source "$fname" "${@}"
+  if $?; then
+    print_ok "$3"
+    if [ -n "$OP_OK" ]; then
+      eval "$OP_OK"
+    fi
+  else
+    print_error "$4: $?"
+    if [ -n "$OP_ERR" ]; then
+      eval "$OP_ERR"
+    fi
+    fail=true
+  fi
+
+  if [ -n "$OP_FINAL" ]; then
+    eval "$OP_FINAL"
   fi
 
   if [[ $fail = true ]]; then
