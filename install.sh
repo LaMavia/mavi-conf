@@ -3,8 +3,8 @@
 cd "$(dirname "$0")" || exit 1
 source ./scripts/helpers.sh
 
-OP_FINAL="cd $(pwd)"
-export OP_FINAL
+RUN_FINAL="cd $(pwd)"
+export RUN_FINAL
 
 run ./steps/yay.sh
 run ./steps/brew.sh

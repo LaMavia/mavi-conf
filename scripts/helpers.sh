@@ -60,26 +60,27 @@ function op {
 
 function run() {
   local fail
-  
+
   fname=$1
   shift
 
   source "$fname" "${@}"
-  if $?; then
-    print_ok "$3"
-    if [ -n "$OP_OK" ]; then
-      eval "$OP_OK"
+  status=$?
+  if [[ $status -eq 0 ]]; then
+    print_ok "Finished $fname."
+    if [ -n "$RUN_OK" ]; then
+      eval "$RUN_OK"
     fi
   else
-    print_error "$4: $?"
-    if [ -n "$OP_ERR" ]; then
-      eval "$OP_ERR"
+    print_error "Failed $fname: $status"
+    if [ -n "$RUN_ERR" ]; then
+      eval "$RUN_ERR"
     fi
     fail=true
   fi
 
-  if [ -n "$OP_FINAL" ]; then
-    eval "$OP_FINAL"
+  if [ -n "$RUN_FINAL" ]; then
+    eval "$RUN_FINAL"
   fi
 
   if [[ $fail = true ]]; then
