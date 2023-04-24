@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "${BASH_SOURCE[0]}")" || exit 1
 source ../scripts/helpers.sh || exit 1
 
 op 'Installing ghcup dependencies...' \
-  'yes | head -n1 | sudo pacman -Syu curl gcc gmp make ncurses coreutils xz' \
+  'sudo pacman -Syu --noconfirm --needed curl gcc gmp make ncurses coreutils xz' \
   'Successfully installed ghcup dependencies.' \
   'Failed to install ghcup dependencies.' || exit 1
 

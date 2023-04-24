@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-base=$(dirname $0)
+base=$(dirname ${BASH_SOURCE[0]})
 cd $base || exit 1
 source ../scripts/helpers.sh || exit 1
 
