@@ -1,0 +1,51 @@
+{
+  "workbench.colorTheme": "Ayu Mirage",
+  "git.enableSmartCommit": true,
+  "editor.fontFamily": "Fira code, NotoSansMono Nerd Font",
+  "editor.fontLigatures": true,
+  "window.menuBarVisibility": "hidden",
+  "workbench.iconTheme": "material-icon-theme",
+  "[python]": {
+    "editor.formatOnType": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.autofetch": true,
+  "git.confirmSync": false,
+  "files.associations": {
+    "*.mss": "scss",
+    "*.sh": "shellscript"
+  },
+  "C_Cpp.default.cppStandard": "c++20",
+  "C_Cpp.default.cStandard": "gnu17",
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[shellscript]": {
+    "editor.defaultFormatter": "foxundermoon.shell-format"
+  },
+  "cSpell.language": "en,pl",
+  "git.openRepositoryInParentFolders": "always",
+  "cSpell.enableFiletypes": ["nasm", "shellscript"],
+  "haskell.manageHLS": "GHCup",
+  "haskell.serverEnvironment": {
+    "PATH": "${HOME}/.ghcup/bin:$PATH"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "nasm.extraFlags": [
+    "-DN=2",
+    "-f elf64",
+    "-w+all",
+    "-w+error"
+  ],
+  "window.zoomLevel": 2,
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.formatOnSave": true
+}

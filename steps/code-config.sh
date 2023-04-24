@@ -11,3 +11,8 @@ done <../code-packages.txt ||
   exit $?
 
 print_ok 'Successfully installed code extensions.'
+
+op 'Copying code settings...' \
+  "cp -f ../settings.json $HOME/.config/Code/User/settings.json" \
+  'Successfully copied code settings.' \
+  'Failed to copy code settings.' || exit $?

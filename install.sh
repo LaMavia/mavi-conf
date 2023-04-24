@@ -14,3 +14,4 @@ run ./steps/haskell.sh
 run ./steps/sys-packages.sh
 run ./steps/memory.sh
 run ./steps/gnome.sh
+run ./steps/powerlevel.sh
