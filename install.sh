@@ -6,7 +6,7 @@ source ./scripts/helpers.sh
 RUN_FINAL="cd $(pwd)"
 export RUN_FINAL
 
-steps=(yay brew glab gh haskell sys-packages memory gnome zsh code-config)
+steps=(yay brew glab gh haskell sys-packages npm memory gnome zsh code-config)
 step0=$1
 
 # Determine the index of the first step

@@ -16,3 +16,5 @@ texlive-fontsextra
 virtualbox
 github-cli
 zsh
+nodejs
+npm
