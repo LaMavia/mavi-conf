@@ -10,7 +10,7 @@ steps=(yay brew glab gh haskell sys-packages npm memory gnome zsh code-config)
 step0=$1
 
 # Determine the index of the first step
-declare i=0
+i=0
 for j in $(seq 0 $((${#steps[@]} - 1))); do
   s=${steps[$j]}
 
